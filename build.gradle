@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.5.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
     }
 }
 
@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     compile('com.android.support:support-v4:18.0.0')
-    compile('com.octo.android.robospice:robospice-spring-android:1.4.6'){
+    compile('com.octo.android.robospice:robospice-spring-android:1.4.6') {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
         exclude group: 'com.google.android', module: 'support-v4'
     }
@@ -25,14 +25,22 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion '17'
+    compileSdkVersion 16
+    buildToolsVersion "19"
 
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
             res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
         }
+    }
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 17
     }
 }
